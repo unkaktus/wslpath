@@ -46,6 +46,8 @@ func toWindowsSlash(p string) string {
 	return strings.Replace(p, unixOSPathSeparator, windowsOSPathSeparator, -1)
 }
 
+// Convert Windows path like "C:\Windows\System32" to
+// a WSL one like "/mnt/c/Windows/System32".
 func FromWindows(p string) (string, error) {
 	volume, target := splitVolumeTarget(p)
 	if volume == "" {
@@ -69,6 +71,8 @@ func FromWindows(p string) (string, error) {
 	return wslPath, nil
 }
 
+// Convert WSL path like "/mnt/c/Windows/System32" to
+// a Windows one like "C:\Windows\System32".
 func ToWindows(p string) (string, error) {
 	mounts, err := mount.GetMounts(drvfsFilter)
 	if err != nil {
