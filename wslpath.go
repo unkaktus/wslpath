@@ -1,3 +1,4 @@
+//go:build linux
 // +build linux
 
 package wslpath
@@ -7,7 +8,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/nogoegst/wslpath/mount"
+	"github.com/unkaktus/wslpath/mount"
 )
 
 var (
